@@ -1,0 +1,14 @@
+services:
+  - id: olx
+    name: OLX
+    url: https://www.olx.pl/
+    categories:
+      - id: 1
+        name: Mieszkania
+        url: nieruchomosci/mieszkania/
+      - id: 2
+        name: Domy
+        url: nieruchomosci/domy/
+      - id: 3
+        name: Działki
+        url: nieruchomosci/dzialki/

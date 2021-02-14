@@ -1,0 +1,14 @@
+{
+  "name": "realestate-scraper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kuba Wolanin",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^3.3.3",
+    "cypress": "^6.4.0"
+  },
+  "scripts": {
+    "cypress:open": "cypress open"
+  }
+}

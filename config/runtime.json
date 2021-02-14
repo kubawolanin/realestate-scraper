@@ -1,0 +1,23 @@
+{
+    "params": {
+        "area": "Kraków",
+        "price": {
+            "from": 10000,
+            "to": 30000
+        }
+    },
+    "services": [
+        {
+            "id": "olx",
+            "enabled": true
+        },
+        {
+            "id": "gratka",
+            "enabled": true
+        },
+        {
+            "id": "gumtree",
+            "enabled": true
+        }
+    ]
+}
