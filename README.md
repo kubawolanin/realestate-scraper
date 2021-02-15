@@ -31,10 +31,10 @@ npx cypress install --force
 
 ## TODO
 
-- [] Parametrized tests (config file)
-- [] Task for merging all results from `data/*.json`
-- [] Add timestamps to every crawled entry
-- [] Task for saving merged results to database (extend config/runtime.json with db connection data)
-- [] Add filtering (exclude/include keywords)
-- [] Add searching with keywords
-- [] Add tests
+- [ ] Parametrized tests (config file)
+- [ ] Task for merging all results from `data/*.json`
+- [ ] Add timestamps to every crawled entry
+- [ ] Task for saving merged results to database (extend config/runtime.json with db connection data)
+- [ ] Add filtering (exclude/include keywords)
+- [ ] Add searching with keywords
+- [ ] Add tests
