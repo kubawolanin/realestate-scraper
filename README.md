@@ -37,3 +37,4 @@ npx cypress install --force
 - [] Task for saving merged results to database (extend config/runtime.json with db connection data)
 - [] Add filtering (exclude/include keywords)
 - [] Add searching with keywords
+- [] Add tests
