@@ -1,4 +1,4 @@
-version: "2.2"
+version: "3.8"
 
 services:
   cypress:
@@ -7,3 +7,5 @@ services:
     volumes:
       - "./cypress:/app/cypress"
       - "./data:/app/data"
+    command: "npx cypress run --spec cypress/integration/olx.spec.js"
+      

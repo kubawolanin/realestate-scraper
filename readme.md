@@ -22,32 +22,18 @@ If there's a intermittent failure in Cypress installation, try
 npx cypress install --force
 ```
 
-## Running
-
-### Standalone
-
-`yarn cypress:open`
-
-or in headless mode:
-
-`yarn cypress:run`
-
-### Docker
-
-`docker build -t realestate-scraper .`
-
-`docker run -v "./cypress:/app/cypress" -v "./config:/app/config" -v "./services.yml:/app/services.yml" realestate-scraper`
-
-### docker-compose
-
-`docker-compose up`
-
 ## Usage
 
 1. Specify parameters in `cypress.env.json`
 2. Run `yarn cypress:open` or `yarn cypress:run`
 3. Choose service of your choice (or run all at once - TODO)
 4. See data/\*.json files for results
+
+## Running in a container
+
+### docker-compose
+
+`docker-compose up`
 
 ## TODO
 
