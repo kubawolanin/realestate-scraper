@@ -1,4 +1,4 @@
-import { getPrice, getArea, getPricePerUnit } from "./utils";
+import { getPrice, getArea, getPricePerUnit, getOlxId } from "./utils";
 
 describe("OLX", () => {
   it("Visits OLX", () => {
@@ -48,6 +48,7 @@ describe("OLX", () => {
     cy.get("#offers_table tbody tr.wrap")
       .each(($tile, index) => {
         const data = {
+          id: getOlxId($tile.find("[data-cy=listing-ad-title]").attr("href")),
           title: $tile.find("[data-cy=listing-ad-title]").text().trim(),
           url: $tile.find("[data-cy=listing-ad-title]").attr("href"),
           price: $tile.find(".price").text().trim(),

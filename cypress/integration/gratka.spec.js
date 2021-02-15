@@ -52,6 +52,7 @@ describe("gratka", () => {
     cy.get(".listing__content article.teaserUnified")
       .each(($tile) => {
         const data = {
+          id: $tile.find("a.teaserUnified__anchor").attr("href").split("/").reverse()[0],
           title: $tile.find("a.teaserUnified__anchor").text().trim(),
           url: $tile.find("a.teaserUnified__anchor").attr("href"),
           description: $tile.find(".teaserUnified__description").text().trim(),

@@ -44,3 +44,16 @@ export const getPricePerUnit = (price, area) => {
 
   return pricePerUnit;
 };
+
+/**
+ * @param {string} url 
+ * @return {string} offer id
+ */
+export const getOlxId = (url) => {
+  console.log(url);
+  if (url.includes("www.otodom.pl")){
+    return url.split(".").reverse()[1].split("-").reverse()[0];
+  }
+
+  return url.split("#")[1].split(";")[0];
+};

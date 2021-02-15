@@ -45,6 +45,7 @@ describe("Gumtree", () => {
     cy.get(".results .view .tileV1")
       .each(($tile) => {
         const data = {
+          id: $tile.find("a.tile-title-text").attr("href").split("/").reverse()[0],
           title: $tile.find("a.tile-title-text").text().trim(),
           url: `https://www.gumtree.pl${$tile
             .find("a.tile-title-text")
