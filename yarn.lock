@@ -1345,11 +1345,6 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-units-converter@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/units-converter/-/units-converter-1.0.3.tgz#c90dfba6582a21981b4cd55a4b30ac58d0b4997a"
-  integrity sha512-tcAwnZxH8NUx0T/eltQ2CUZ21jJxLRHF7dkPoYDFdX+W+VHxbvb/aH5xXBa0Cdp1tpyFI6rju+Jnpj9seuudqg==
-
 universalify@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
