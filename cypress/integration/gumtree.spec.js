@@ -12,19 +12,33 @@ describe("Gumtree", () => {
   it("Visits Gumtree", () => {
     const results = [];
 
+    // TODO: Get these from config file
+    const location = "Kraków";
     const from = 10000;
     const to = 20000;
 
-    cy.visit(
-      `https://www.gumtree.pl/s-dzialki/krakow/v1c9194l3200208p1?pr=${from},${to}`
-    );
+    cy.viewport(1200, 800);
 
-    /* ==== Generated with Cypress Studio ==== */
-    // cy.get("#onetrust-accept-btn-handler").click();
-    // cy.get("#attr\\.Price\\.amountMin").type("10000");
-    // cy.get("#attr\\.Price\\.amountMax").type("20000");
-    // cy.get(".icon-chevron-white-right").click();
-    // /* ==== End Cypress Studio ==== */
+    cy.visit("https://www.gumtree.pl/");
+
+    // TODO: make it configurable?
+    cy.get(".category-list a:contains(działki)").click();
+    cy.get(".location").click();
+    cy.get("div.location > div.options ul")
+      .find(`li a:contains(${location})`)
+      .click({ force: true }); // element is not visible
+
+    cy.get(".searchbar .button").click();
+
+    // Accept cookies
+    cy.get("#onetrust-accept-btn-handler").click();
+
+    // Set the price range
+    cy.get("#attr\\.Price\\.amountMin").type(from);
+    cy.get("#attr\\.Price\\.amountMax").type(to);
+    cy.get(".icon-chevron-white-right").click();
+
+    // Process the results
     cy.get(".results .view .tileV1")
       .each(($tile) => {
         const data = {

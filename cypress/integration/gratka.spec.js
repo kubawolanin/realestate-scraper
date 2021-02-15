@@ -6,21 +6,42 @@ describe("gratka", () => {
   it("Visits gratka", () => {
     const results = [];
 
-    cy.visit(
-      "https://gratka.pl/nieruchomosci/dzialki-grunty/budowlana/krakow?cena-calkowita:min=100000&cena-calkowita:max=200000"
-    );
-    /* ==== Generated with Cypress Studio ==== */
+    // TODO: Get these from config file
+    const location = "Kraków";
+    const from = 100000;
+    const to = 200000;
+    const keyword = "";
+
+    cy.visit("https://gratka.pl/nieruchomosci/");
     cy.get(".crossDialog__decisionPositive").click();
 
-    // cy.get("#powierzchnia-dzialki-w-m2-min-desktop-search-1304619753").type(
-    //   "500"
-    // );
-    // cy.get("#powierzchnia-dzialki-w-m2-max-desktop-search-1304619753").type(
-    //   "10000{backspace}"
-    // );
-    cy.get(".generator__filterTools").click();
-    cy.get(".generator__applyFilters").click();
-    /* ==== End Cypress Studio ==== */
+    cy.get(".listingCategoryField .mockInput").click({ force: true });
+    cy.get(".category__categoryName:contains(Działki)").click({
+      force: true,
+    });
+    cy.get(
+      ".category__chooseCurrentCategory:contains(Wszystkie w Działki)"
+    ).click({ force: true });
+
+    cy.wait(1000);
+
+    cy.get(".locationSuggester input")
+      .scrollIntoView()
+      .type(location, { force: true });
+    cy.get(".category__inputHints .category__hint:eq(0)").click({
+      force: true,
+    });
+
+    cy.get(".generator__twoFields:eq(0)").click({ force: true });
+    cy.get("[name=cena-calkowita_min]:eq(0)").type(from);
+    cy.get("[name=cena-calkowita_max]:eq(0)").type(to);
+
+    if (keyword) {
+      cy.get(".generator__toggleSearchFullView").click({ force: true });
+      cy.get(".listingSearchBar__input").type(keyword, { force: true });
+    }
+
+    cy.get(".generator__applyFilters").click({ force: true });
 
     cy.get(".listing__content article.teaserUnified")
       .each(($tile) => {
@@ -31,17 +52,17 @@ describe("gratka", () => {
           price: getPrice(
             $tile
               .find(".teaserUnified__price")[0]
-              .childNodes[0].nodeValue.trim()
+              .childNodes[0]?.nodeValue.trim()
           ),
           pricePerUnit: getPrice(
             $tile
-              .find(".teaserUnified__additionalPrice")[0]
-              .childNodes[0].nodeValue.trim()
+              .find(".teaserUnified__additionalPrice")?.[0]
+              .childNodes[0]?.nodeValue.trim()
           ),
           area: getArea(
             $tile
               .find(".teaserUnified__params .teaserUnified__listItem")[0]
-              .childNodes[0].nodeValue.trim()
+              .childNodes[0]?.nodeValue.trim() // TODO: childNodes of undefined
           ),
           thumbnail: $tile.find(".teaserUnified__img").attr("src"),
         };
