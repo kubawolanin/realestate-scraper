@@ -1,9 +1,11 @@
-import { getPrice } from "./getPrice";
+import { getPrice } from "./utils";
 
 const getArea = (areaString) => Number(areaString.replace(/[^0-9\.]+/g, ""));
 
 describe("gratka", () => {
   it("Visits gratka", () => {
+    const results = [];
+
     cy.visit(
       "https://gratka.pl/nieruchomosci/dzialki-grunty/budowlana/krakow?cena-calkowita:min=100000&cena-calkowita:max=200000"
     );
@@ -20,10 +22,8 @@ describe("gratka", () => {
     cy.get(".generator__applyFilters").click();
     /* ==== End Cypress Studio ==== */
 
-    cy.get(".listing__content")
-      .children("article.teaserUnified")
-      .map((tile) => {
-        const $tile = Cypress.$(tile);
+    cy.get(".listing__content article.teaserUnified")
+      .each(($tile) => {
         const data = {
           title: $tile.find("a.teaserUnified__anchor").text().trim(),
           url: $tile.find("a.teaserUnified__anchor").attr("href"),
@@ -46,9 +46,14 @@ describe("gratka", () => {
           thumbnail: $tile.find(".teaserUnified__img").attr("src"),
         };
 
-        return {
+        results.push({
           ...data,
-        };
+        });
+      })
+      .then(() => {
+        cy.writeFile("data/gratka.json", results);
       });
+
+    cy.log(results);
   });
 });

@@ -23,17 +23,3 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-
-const _ = require("lodash");
-const keys = _.keys(Cypress.Commands._commands);
-const desired = ["map", "chunk", "flatMap"];
-
-_.each(desired, (fn) => {
-  if (!_.includes(keys, fn)) {
-    Cypress.Commands.add(fn, { prevSubject: true }, (...args) => {
-      let val = _[fn](...args);
-      Cypress.log(val);
-      return val;
-    });
-  }
-});

@@ -8,3 +8,4 @@ services:
           - "./cypress:/app/cypress"
           - "./config:/app/config"
           - "./services.yml:/app/services.yml"
+          - "./data:/app/data"
