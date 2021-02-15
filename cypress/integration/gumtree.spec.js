@@ -12,10 +12,11 @@ describe("Gumtree", () => {
   it("Visits Gumtree", () => {
     const results = [];
 
-    // TODO: Get these from config file
-    const location = "Kraków";
-    const from = 10000;
-    const to = 20000;
+    const {
+      location,
+      keyword,
+      price: { from, to },
+    } = Cypress.env().params;
 
     cy.viewport(1200, 800);
 
@@ -27,12 +28,14 @@ describe("Gumtree", () => {
     cy.get("div.location > div.options ul")
       .find(`li a:contains(${location})`)
       .click({ force: true }); // element is not visible
+    if (keyword) {
+      cy.get(".searchbar .keyword input").type(keyword, { force: true });
+    }
 
     cy.get(".searchbar .button").click();
 
     // Accept cookies
     cy.get("#onetrust-accept-btn-handler").click();
-
     // Set the price range
     cy.get("#attr\\.Price\\.amountMin").type(from);
     cy.get("#attr\\.Price\\.amountMax").type(to);

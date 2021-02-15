@@ -44,17 +44,17 @@ or in headless mode:
 
 ## Usage
 
-1. Specify parameters in config/runtime.json (TODO)
-2. Run `yarn cypress:open`
-3. Choose service of your choice (or run all at once TODO)
+1. Specify parameters in `cypress.env.json`
+2. Run `yarn cypress:open` or `yarn cypress:run`
+3. Choose service of your choice (or run all at once - TODO)
 4. See data/\*.json files for results
 
 ## TODO
 
-- [ ] Parametrized tests (config file)
+- [x] Parametrized tests (`cypress.env.json` config file)
 - [ ] Task for merging all results from `data/*.json`
 - [ ] Add timestamps to every crawled entry
 - [ ] Task for saving merged results to database (extend config/runtime.json with db connection data)
 - [ ] Add filtering (exclude/include keywords)
-- [ ] Add searching with keywords
+- [x] Add searching with keywords
 - [ ] Add tests

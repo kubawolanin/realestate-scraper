@@ -4,43 +4,46 @@ describe("OLX", () => {
   it("Visits OLX", () => {
     const results = [];
 
-    cy.visit("https://www.olx.pl/nieruchomosci/dzialki/sprzedaz/krakow/");
+    const {
+      location,
+      keyword,
+      price: { from, to },
+    } = Cypress.env().params;
 
-    // ?search%5Bfilter_enum_type%5D%5B0%5D=dzialki-budowlane&search%5Bfilter_enum_type%5D%5B1%5D=dzialki-rolno-budowlane
-    /* ==== Generated with Cypress Studio ==== */
+    cy.viewport(1200, 800);
+
+    cy.visit("https://www.olx.pl/nieruchomosci/");
 
     // accept cookies
     cy.get("#onetrust-accept-btn-handler").click();
+
+    cy.get("#cityField").focus().type(location, { force: true });
+
+    cy.get("#search-submit").click();
+
+    cy.get("#choosecat").click();
+    cy.get('[data-name="Działki"]').click({ force: true });
+
+    cy.wait(1000);
 
     cy.get(
       "#param_price > .filter-both-item > .filter-item-from > .button > .header"
     ).click();
     cy.get(
-      "#param_price > .filter-both-item > .filter-item-from > .num-input > .defaultval"
-    ).type("10000");
+      "#param_price > .filter-both-item > .filter-item-from > .num-input > .small"
+    ).type(from);
     cy.get(
       "#param_price > .filter-both-item > .filter-item-to > .button > .header"
     ).click();
     cy.get(
-      "#param_price > .filter-both-item > .filter-item-to > .button > .header"
-    ).click();
-    cy.get(
-      "#param_price > .filter-both-item > .filter-item-to > .num-input > .defaultval"
-    ).type("20000");
-    cy.get(
-      "#param_m > .filter-both-item > .filter-item-from > .button > .header"
-    ).click();
-    cy.get(
-      "#param_m > .filter-both-item > .filter-item-from > .num-input > .defaultval"
-    ).type("100");
-    cy.get(
-      "#param_m > .filter-both-item > .filter-item-to > .button > .header"
-    ).click();
-    cy.get(
-      "#param_m > .filter-both-item > .filter-item-to > .num-input > .defaultval"
-    ).type("20000");
-    cy.get(".paramsList__title").click();
-    /* ==== End Cypress Studio ==== */
+      "#param_price > .filter-both-item > .filter-item-to > .num-input > .small"
+    ).type(to);
+
+    if (keyword) {
+      cy.get("#search-text").type(keyword, { force: true });
+    }
+
+    cy.get("#search-submit").click();
 
     cy.get("#offers_table tbody tr.wrap")
       .each(($tile, index) => {

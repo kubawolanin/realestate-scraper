@@ -6,11 +6,15 @@ describe("gratka", () => {
   it("Visits gratka", () => {
     const results = [];
 
-    // TODO: Get these from config file
-    const location = "Kraków";
-    const from = 100000;
-    const to = 200000;
-    const keyword = "";
+    const {
+      location,
+      keyword,
+      price: { from, to },
+      mustInclude,
+      exclude,
+    } = Cypress.env().params;
+
+    cy.viewport(1200, 800);
 
     cy.visit("https://gratka.pl/nieruchomosci/");
     cy.get(".crossDialog__decisionPositive").click();
@@ -43,6 +47,8 @@ describe("gratka", () => {
 
     cy.get(".generator__applyFilters").click({ force: true });
 
+    cy.wait(1000);
+
     cy.get(".listing__content article.teaserUnified")
       .each(($tile) => {
         const data = {
@@ -70,6 +76,37 @@ describe("gratka", () => {
         results.push({
           ...data,
         });
+
+        // TODO Bloody mess
+        // if (exclude.length) {
+        //   exclude.forEach((excludedKey) => {
+        //     if (
+        //       !data.title.includes(excludedKey) ||
+        //       !data.description.includes(excludedKey)
+        //     ) {
+        //       if (mustInclude.length) {
+        //         mustInclude.forEach((includedKey) => {
+        //           if (
+        //             data.title.includes(includedKey) ||
+        //             data.description.includes(includedKey)
+        //           ) {
+        //             results.push({
+        //               ...data,
+        //             });
+        //           }
+        //         });
+        //       } else {
+        //         results.push({
+        //           ...data,
+        //         });
+        //       }
+        //     }
+        //   });
+        // } else {
+        //   results.push({
+        //     ...data,
+        //   });
+        // }
       })
       .then(() => {
         cy.writeFile("data/gratka.json", results);
