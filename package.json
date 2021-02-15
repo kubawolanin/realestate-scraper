@@ -6,9 +6,12 @@
   "license": "MIT",
   "dependencies": {
     "config": "^3.3.3",
-    "cypress": "^6.4.0"
+    "cypress": "^6.4.0",
+    "lodash": "^4.17.20",
+    "units-converter": "^1.0.3"
   },
   "scripts": {
+    "start": "yarn cypress:open",
     "cypress:open": "cypress open"
   }
 }

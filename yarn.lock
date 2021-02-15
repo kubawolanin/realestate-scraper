@@ -893,7 +893,7 @@ lodash.once@^4.1.1:
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
   integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
 
-lodash@^4.17.19:
+lodash@^4.17.19, lodash@^4.17.20:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -1344,6 +1344,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+units-converter@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/units-converter/-/units-converter-1.0.3.tgz#c90dfba6582a21981b4cd55a4b30ac58d0b4997a"
+  integrity sha512-tcAwnZxH8NUx0T/eltQ2CUZ21jJxLRHF7dkPoYDFdX+W+VHxbvb/aH5xXBa0Cdp1tpyFI6rju+Jnpj9seuudqg==
 
 universalify@^2.0.0:
   version "2.0.0"

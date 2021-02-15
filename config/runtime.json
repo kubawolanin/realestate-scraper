@@ -1,6 +1,7 @@
 {
     "params": {
         "area": "Kraków",
+        "keyword": "",
         "price": {
             "from": 10000,
             "to": 30000
