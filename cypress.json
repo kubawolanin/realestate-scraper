@@ -1,4 +1,6 @@
 {
     "experimentalStudio": true,
-    "testFiles": "**/*.spec.[jt]s"
+    "testFiles": "**/*.spec.[jt]s",
+    "video": false,
+    "screenshotOnRunFailure": false
 }

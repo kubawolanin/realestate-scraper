@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 /data
+/cypress/screenshots
+/cypress/videos
