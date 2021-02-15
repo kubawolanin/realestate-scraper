@@ -12,6 +12,7 @@
   },
   "scripts": {
     "start": "yarn cypress:open",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   }
 }
