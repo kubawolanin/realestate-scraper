@@ -6,5 +6,6 @@ COPY yarn.lock .
 
 RUN yarn
 COPY cypress.json .
+COPY cypress.env.json .
 
 ENTRYPOINT yarn cypress:run

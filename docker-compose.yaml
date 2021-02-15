@@ -1,11 +1,9 @@
-version: '2.2'
+version: "2.2"
 
 services:
-    cypress:
-        image: realestate-scrapper
-        build: .
-        volumes: 
-          - "./cypress:/app/cypress"
-          - "./config:/app/config"
-          - "./services.yml:/app/services.yml"
-          - "./data:/app/data"
+  cypress:
+    image: realestate-scrapper
+    build: .
+    volumes:
+      - "./cypress:/app/cypress"
+      - "./data:/app/data"

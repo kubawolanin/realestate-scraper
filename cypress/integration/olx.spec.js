@@ -19,7 +19,7 @@ describe("OLX", () => {
 
     cy.get("#cityField").focus().type(location, { force: true });
 
-    cy.get("#search-submit").click();
+    cy.get("#search-submit").click({ force: true });
 
     cy.get("#choosecat").click();
     cy.get('[data-name="Działki"]').click({ force: true });
@@ -28,22 +28,22 @@ describe("OLX", () => {
 
     cy.get(
       "#param_price > .filter-both-item > .filter-item-from > .button > .header"
-    ).click();
+    ).click({ force: true });
     cy.get(
       "#param_price > .filter-both-item > .filter-item-from > .num-input > .small"
-    ).type(from);
+    ).type(from, { force: true });
     cy.get(
       "#param_price > .filter-both-item > .filter-item-to > .button > .header"
-    ).click();
+    ).click({ force: true });
     cy.get(
       "#param_price > .filter-both-item > .filter-item-to > .num-input > .small"
-    ).type(to);
+    ).type(to, { force: true });
 
     if (keyword) {
       cy.get("#search-text").type(keyword, { force: true });
     }
 
-    cy.get("#search-submit").click();
+    cy.get("#search-submit").click({ force: true });
 
     cy.get("#offers_table tbody tr.wrap")
       .each(($tile, index) => {
